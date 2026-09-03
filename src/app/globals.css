@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ===== YOUR CUSTOM THEME (Preserved) ===== */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,3 +25,67 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================================================ */
+/* ===== NUCLEAR FIX FOR BLUE HIGHLIGHT (The KILLER) ===== */
+/* ================================================================ */
+
+/* 1. Kill it on ALL elements for mobile taps */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* 2. Kill it on ALL nav links (Desktop + Mobile) */
+nav a,
+nav a:link,
+nav a:visited,
+nav a:hover,
+nav a:active,
+nav a:focus,
+nav a:focus-visible,
+nav a:focus-within {
+  background-color: transparent !important;
+  background-image: none !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  text-shadow: none !important;
+}
+
+/* 3. Specifically kill the blue highlight on the About tab (and all others) */
+nav a[href="#about"],
+nav a[href="#about"]:link,
+nav a[href="#about"]:visited,
+nav a[href="#about"]:hover,
+nav a[href="#about"]:active,
+nav a[href="#about"]:focus,
+nav a[href="#about"]:focus-visible {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 4. Kill it on the hamburger button */
+button,
+button:active,
+button:focus,
+button:focus-visible {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* 5. Fix section target scroll (Already had it, just keeping it) */
+section:target {
+  scroll-margin-top: 80px;
+}
+

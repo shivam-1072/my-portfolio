@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { ReactTyped } from "react-typed";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   const waveRef = useRef<HTMLSpanElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (waveRef.current) {
@@ -29,12 +30,127 @@ export default function Home() {
         }
       `}</style>
 
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4">
+      <main className="bg-gradient-to-br from-gray-50 to-gray-100">
         
+{/* ===== NAVBAR WITH HOVER UNDERLINE & NO BLUE SHADE ===== */}
+<nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60 px-4 py-4">
+  <div className="max-w-6xl mx-auto flex items-center justify-between">
+    {/* Logo */}
+    <a href="#" className="text-2xl font-bold text-gray-800">
+      Shivam<span className="text-blue-600">.dev</span>
+    </a>
+
+    {/* Desktop Nav Links with Hover Underline - NO BLUE SHADE */}
+<div className="hidden md:flex items-center gap-8 text-base font-medium text-gray-600">
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
+  >
+    About
+  </a>
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
+  >
+    Skills
+  </a>
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
+  >
+    Projects
+  </a>
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
+  >
+    Contact
+  </a>
+  <a
+    href="/cv"
+    className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold focus:outline-none active:scale-95"
+  >
+    📄 View CV
+  </a>
+</div>
+
+    {/* Mobile Hamburger - Animated Icon */}
+    <button
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      className="md:hidden text-gray-600 text-3xl focus:outline-none transition-transform duration-300 hover:scale-110"
+      aria-label="Toggle Menu"
+    >
+      {isMenuOpen ? '✕' : '☰'}
+    </button>
+  </div>
+
+  {/* Mobile Menu Dropdown - SMOOTH SLIDE ANIMATION */}
+  <div
+    className={`
+      md:hidden overflow-hidden transition-all duration-300 ease-in-out
+      ${isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
+    `}
+  >
+    <div className="flex flex-col items-center gap-4 text-base font-medium text-gray-600 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg p-4 shadow-lg">
+      <a
+        href="#about"
+        onClick={() => setIsMenuOpen(false)}
+        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+      >
+        About
+      </a>
+      <a
+        href="#skills"
+        onClick={() => setIsMenuOpen(false)}
+        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+      >
+        Skills
+      </a>
+      <a
+        href="#projects"
+        onClick={() => setIsMenuOpen(false)}
+        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+      >
+        Projects
+      </a>
+      <a
+        href="#contact"
+        onClick={() => setIsMenuOpen(false)}
+        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+      >
+        Contact
+      </a>
+      <a
+        href="/cv"
+        onClick={() => setIsMenuOpen(false)}
+        className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold w-full text-center focus:outline-none active:scale-95"
+      >
+        📄 View CV
+      </a>
+    </div>
+  </div>
+</nav>
+
         {/* ============================================================ */}
         {/* SECTION 1: HERO (Terminal + Intro) */}
         {/* ============================================================ */}
-        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4 py-20 md:py-10">
           
           {/* LEFT: Terminal */}
           <div className="order-2 md:order-1 flex justify-center">
@@ -122,6 +238,12 @@ export default function Home() {
               >
                 📬 Let's Talk
               </a>
+              <a 
+  href="/cv" 
+  className="border-2 border-gray-300 text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all hover:-translate-y-0.5"
+>
+  📄 View CV
+</a>
             </div>
           </div>
         </div>
@@ -129,7 +251,7 @@ export default function Home() {
         {/* ============================================================ */}
         {/* SECTION 2: ABOUT ME (Based on your CV) */}
         {/* ============================================================ */}
-        <section id="about" className="w-full max-w-5xl mx-auto py-20 px-4 text-left">
+        <section id="about" className="w-full max-w-5xl mx-auto py-12 px-4 text-left scroll-mt-20">
           <h2 className="mb-8 text-3xl font-bold text-gray-800 md:text-4xl">
             About <span className="text-blue-600">Me</span>
           </h2>
@@ -204,11 +326,11 @@ export default function Home() {
         {/* ============================================================ */}
         {/* SECTION 3: SKILLS & SERVICES */}
         {/* ============================================================ */}
-        <section id="skills" className="w-full max-w-5xl mx-auto py-20 px-4">
+        <section id="skills" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
           <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
             My <span className="text-blue-600">Tech Arsenal</span>
           </h2>
-          <p className="mb-12 text-gray-500 max-w-2xl">
+          <p className="mb-8 text-gray-500 max-w-2xl">
             Tools and technologies I use daily to keep systems running smoothly.
           </p>
 
@@ -293,11 +415,11 @@ export default function Home() {
                 {/* ============================================================ */}
         {/* SECTION 4: PROJECTS */}
         {/* ============================================================ */}
-        <section id="projects" className="w-full max-w-5xl mx-auto py-20 px-4">
+        <section id="projects" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
           <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
             My <span className="text-blue-600">Projects</span>
           </h2>
-          <p className="mb-10 text-gray-500 max-w-2xl">
+          <p className="mb-6 text-gray-500 max-w-2xl">
             Real-world applications I've built, deployed, and managed.
           </p>
 
@@ -383,10 +505,136 @@ export default function Home() {
         {/* ============================================================ */}
         {/* <section id="projects"> ... We will add this in Session #7 ... </section> */}
 
+{/* <Contact /> */}
+
+{/* ============================================================ */}
+{/* SECTION: CONTACT - SIMPLEST POSSIBLE */}
+{/* ============================================================ */}
+<section id="contact" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
+  <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+    Let's <span className="text-blue-600">Connect</span>
+  </h2>
+  <p className="mb-10 text-gray-500 max-w-2xl">
+    Have a project in mind or just want to chat? Reach out to me.
+  </p>
+
+  {/* SIMPLE TWO-COLUMN LAYOUT */}
+  <div className="w-full">
+    <div className="flex flex-wrap -mx-4">
+      
+      {/* LEFT COLUMN */}
+      <div className="w-full md:w-1/2 px-4">
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
+              📧
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Email</p>
+              <a href="mailto:shivam1072@gmail.com" className="text-gray-800 font-medium hover:text-blue-600">
+                shivam1072@gmail.com
+              </a>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
+              📱
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Phone</p>
+              <a href="tel:+917506992276" className="text-gray-800 font-medium hover:text-blue-600">
+                +91 7506992276
+              </a>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
+              🌐
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Find me online</p>
+              <div className="flex gap-4 mt-1">
+                <a href="https://github.com/shivam-1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                  GitHub
+                </a>
+                <a href="https://linkedin.com/in/shivamsharma1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-gray-200">
+            <p className="text-sm text-gray-500">📍 Mumbai, India</p>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT COLUMN */}
+      <div className="w-full md:w-1/2 px-4 mt-6 md:mt-0">
+        <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Send a Message</h3>
+          <form className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+              <input 
+                type="text" 
+                placeholder="John Doe" 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+              <input 
+                type="email" 
+                placeholder="john@example.com" 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea 
+                rows={4} 
+                placeholder="Tell me about your project..." 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
+              ></textarea>
+            </div>
+            <button 
+              type="submit" 
+              className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              📤 Send Message
+            </button>
+            <p className="text-xs text-gray-400 text-center mt-2">
+              * This is a demo form. For now, please email me directly.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
         {/* ============================================================ */}
-        {/* SECTION 5: CONTACT (Coming Next) */}
+        {/* SECTION 6: FOOTER */}
         {/* ============================================================ */}
-        {/* <section id="contact"> ... We will add this in Session #8 ... </section> */}
+        <footer className="w-full border-t border-gray-200 bg-white/50 mt-8">
+          <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <p>
+              © {new Date().getFullYear()} Shivam Sharma. Built with 
+              <span className="text-blue-600"> Next.js</span> & 
+              <span className="text-blue-600"> Tailwind</span>.
+            </p>
+            <div className="flex gap-6 mt-2 md:mt-0">
+              <a href="#about" className="hover:text-blue-600 transition">About</a>
+              <a href="#skills" className="hover:text-blue-600 transition">Skills</a>
+              <a href="#projects" className="hover:text-blue-600 transition">Projects</a>
+              <a href="#contact" className="hover:text-blue-600 transition">Contact</a>
+            </div>
+          </div>
+        </footer>
 
       </main>
     </>
