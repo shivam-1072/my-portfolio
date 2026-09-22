@@ -126,8 +126,8 @@ export default function Contact() {
                 type="text" 
                 name="name"
                 required
-                placeholder="John Doe" 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                // placeholder="Enter Name" 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 bg-white placeholder-gray-400"
               />
             </div>
             <div>
@@ -136,8 +136,8 @@ export default function Contact() {
                 type="email" 
                 name="email"
                 required
-                placeholder="john@example.com" 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                // placeholder="abc@example.com" 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 bg-white placeholder-gray-400"
               />
             </div>
             <div>
@@ -147,7 +147,7 @@ export default function Contact() {
                 name="message"
                 required
                 placeholder="Tell me about your project..." 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none text-gray-900 bg-white placeholder-gray-400"
               ></textarea>
             </div>
             <button 
