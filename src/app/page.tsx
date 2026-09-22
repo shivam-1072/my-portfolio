@@ -3,6 +3,7 @@
 import { ReactTyped } from "react-typed";
 import { useEffect, useRef, useState } from "react";
 import Contact from "@/components/Contact";
+import Projects from '@/components/Projects';
 
 export default function Home() {
   const waveRef = useRef<HTMLSpanElement>(null);
@@ -36,9 +37,13 @@ export default function Home() {
 <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60 px-4 py-4">
   <div className="max-w-6xl mx-auto flex items-center justify-between">
     {/* Logo */}
-    <a href="#" className="text-2xl font-bold text-gray-800">
-      Shivam<span className="text-blue-600">.dev</span>
-    </a>
+    <a href="#" className="flex items-center">
+  <img 
+    src="/logo.png" 
+    alt="Shivam Sharma" 
+    className="width-3 h-12 object-cover hover:scale-105 transition-transform"
+  />
+</a>
 
     {/* Desktop Nav Links with Hover Underline - NO BLUE SHADE */}
 <div className="hidden md:flex items-center gap-8 text-base font-medium text-gray-600">
@@ -82,12 +87,13 @@ export default function Home() {
   >
     Contact
   </a>
-  <a
-    href="/cv"
-    className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold focus:outline-none active:scale-95"
-  >
-    📄 View CV
-  </a>
+  {/* <a 
+  href="/cv-image.png" 
+  target="_blank"
+  className="border-2 border-gray-300 text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all hover:-translate-y-0.5"
+>
+  📄 View CV
+</a> */}
 </div>
 
     {/* Mobile Hamburger - Animated Icon */}
@@ -412,21 +418,23 @@ export default function Home() {
         {/* ============================================================ */}
         {/* SECTION 4: PROJECTS (Coming Next) */}
 
+        <Projects />
+
                 {/* ============================================================ */}
         {/* SECTION 4: PROJECTS */}
         {/* ============================================================ */}
         <section id="projects" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
           <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-            My <span className="text-blue-600">Projects</span>
+            Work <span className="text-blue-600">Experience</span>
           </h2>
-          <p className="mb-6 text-gray-500 max-w-2xl">
+          {/* <p className="mb-6 text-gray-500 max-w-2xl">
             Real-world applications I've built, deployed, and managed.
-          </p>
+          </p> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* PROJECT CARD 1: CWMS */}
-            <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group">
+            {/* <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group">
               <div className="flex items-center gap-2 text-sm text-blue-600 font-mono mb-3">
                 <span className="bg-blue-50 px-2 py-0.5 rounded">Django</span>
                 <span className="bg-blue-50 px-2 py-0.5 rounded">Docker</span>
@@ -446,12 +454,12 @@ export default function Home() {
                 <a href="https://github.com/shivam-1072/cwms" target="_blank" className="text-blue-600 font-medium text-sm hover:underline">
                   🔗 View Code →
                 </a>
-                {/* <a href="#" className="text-gray-400 text-sm hover:text-blue-600">Live Demo</a> */}
+                <a href="#" className="text-gray-400 text-sm hover:text-blue-600">Live Demo</a>
               </div>
-            </div>
+            </div> */}
 
             {/* PROJECT CARD 2: DevOps Lab */}
-            <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group">
+            {/* <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group">
               <div className="flex items-center gap-2 text-sm text-blue-600 font-mono mb-3">
                 <span className="bg-blue-50 px-2 py-0.5 rounded">Flask</span>
                 <span className="bg-blue-50 px-2 py-0.5 rounded">K8s</span>
@@ -473,7 +481,7 @@ export default function Home() {
                   🔗 View Code →
                 </a>
               </div>
-            </div>
+            </div> */}
 
             {/* PROFESSIONAL ACHIEVEMENT CARD (Banking Experience) */}
             <div className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-xl p-6 border border-blue-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 md:col-span-2">
@@ -573,7 +581,7 @@ export default function Home() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div className="w-full md:w-1/2 px-4 mt-6 md:mt-0">
+      <div className="w-full md:w-1/2 px-4 -mt-32">
         <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Send a Message</h3>
           <form className="space-y-4">
@@ -602,11 +610,13 @@ export default function Home() {
               ></textarea>
             </div>
             <button 
-              type="submit" 
-              className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition"
-            >
-              📤 Send Message
-            </button>
+  type="submit" 
+  className="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all hover:shadow-lg text-lg"
+>
+  <span className="flex items-center justify-center gap-2">
+    <span>📤</span> Send Message
+  </span>
+</button>
             <p className="text-xs text-gray-400 text-center mt-2">
               * This is a demo form. For now, please email me directly.
             </p>

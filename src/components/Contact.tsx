@@ -1,6 +1,37 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Contact() {
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+        setTimeout(() => setFormStatus("idle"), 5000);
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setFormStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
       <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
@@ -64,11 +95,37 @@ export default function Contact() {
         {/* RIGHT SIDE - Contact Form */}
         <div className="w-full md:w-1/2 bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Send a Message</h3>
-          <form className="space-y-4">
+          
+          {/* Success Message */}
+          {formStatus === "success" && (
+            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+              ✅ Thanks! Your message has been sent. I'll get back to you soon.
+            </div>
+          )}
+
+          {/* Error Message */}
+          {formStatus === "error" && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              ❌ Something went wrong. Please try again or email me directly.
+            </div>
+          )}
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            onSubmit={handleSubmit}
+            className="space-y-4"
+          >
+            {/* Required for Netlify to identify the form */}
+            <input type="hidden" name="form-name" value="contact" />
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
               <input 
                 type="text" 
+                name="name"
+                required
                 placeholder="John Doe" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
               />
@@ -77,6 +134,8 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
               <input 
                 type="email" 
+                name="email"
+                required
                 placeholder="john@example.com" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
               />
@@ -85,19 +144,19 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
               <textarea 
                 rows={4} 
+                name="message"
+                required
                 placeholder="Tell me about your project..." 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
               ></textarea>
             </div>
             <button 
               type="submit" 
-              className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition"
+              disabled={formStatus === "submitting"}
+              className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              📤 Send Message
+              {formStatus === "submitting" ? "⏳ Sending..." : "📤 Send Message"}
             </button>
-            <p className="text-xs text-gray-400 text-center mt-2">
-              * This is a demo form. For now, please email me directly.
-            </p>
           </form>
         </div>
       </div>
