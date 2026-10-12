@@ -11,12 +11,18 @@ export default function Contact() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const encodedFormData = new URLSearchParams();
+    formData.forEach((value, key) => {
+      if (typeof value === "string") {
+        encodedFormData.append(key, value);
+      }
+    });
 
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: encodedFormData.toString(),
       });
 
       if (response.ok) {
