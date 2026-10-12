@@ -30,61 +30,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ================================================================ */
-/* ===== NUCLEAR FIX FOR BLUE HIGHLIGHT (The KILLER) ===== */
-/* ================================================================ */
-
-/* 1. Kill it on ALL elements for mobile taps */
+/* Remove the browser's blue tap flash while retaining visible keyboard focus. */
 * {
   -webkit-tap-highlight-color: transparent !important;
   -webkit-touch-callout: none !important;
 }
 
-/* 2. Kill it on ALL nav links (Desktop + Mobile) */
-nav a,
-nav a:link,
-nav a:visited,
-nav a:hover,
-nav a:active,
-nav a:focus,
-nav a:focus-visible,
-nav a:focus-within {
-  background-color: transparent !important;
-  background-image: none !important;
-  outline: none !important;
-  outline-offset: 0 !important;
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  text-shadow: none !important;
-}
-
-/* 3. Specifically kill the blue highlight on the About tab (and all others) */
-nav a[href="#about"],
-nav a[href="#about"]:link,
-nav a[href="#about"]:visited,
-nav a[href="#about"]:hover,
-nav a[href="#about"]:active,
-nav a[href="#about"]:focus,
-nav a[href="#about"]:focus-visible {
-  background-color: transparent !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* 4. Kill it on the hamburger button */
-button,
-button:active,
-button:focus,
-button:focus-visible {
-  background-color: transparent !important;
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-/* 5. Fix section target scroll (Already had it, just keeping it) */
+/* Keep anchor targets clear of the sticky navbar. */
 section:target {
   scroll-margin-top: 80px;
 }
@@ -122,13 +74,13 @@ section:target {
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
@@ -224,8 +176,60 @@ section:target {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
+}
+
+input,
+textarea,
+select {
+  color: #1a1a2e !important;
+  -webkit-text-fill-color: #1a1a2e !important;
+  background-color: #ffffff !important;
+  color-scheme: light !important;
+  caret-color: #1a1a2e !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Force the form container to use light mode */
+form,
+form * {
+  color-scheme: light !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a2e !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Success message fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
 }

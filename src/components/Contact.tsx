@@ -22,7 +22,8 @@ export default function Contact() {
       if (response.ok) {
         setFormStatus("success");
         form.reset();
-        setTimeout(() => setFormStatus("idle"), 5000);
+        // Auto-hide success message after 6 seconds
+        setTimeout(() => setFormStatus("idle"), 6000);
       } else {
         setFormStatus("error");
       }
@@ -34,26 +35,27 @@ export default function Contact() {
 
   return (
     <section id="contact" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
-      <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-        Let's <span className="text-blue-600">Connect</span>
-      </h2>
-      <p className="mb-10 text-gray-500 max-w-2xl">
-        Have a project in mind or just want to chat? Reach out to me.
-      </p>
-
-      {/* SIMPLE FLEXBOX - NO GRID TRICKS */}
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-8">
         
         {/* LEFT SIDE - Contact Info */}
-        <div className="w-full md:w-1/2 space-y-6">
+        <div className="space-y-6">
+          <div>
+            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+              Let&apos;s <span className="text-blue-600">Connect</span>
+            </h2>
+            <p className="text-gray-500">
+              Have a project in mind or just want to chat? Reach out to me.
+            </p>
+          </div>
+
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
               📧
             </div>
             <div>
               <p className="text-sm text-gray-500">Email</p>
-              <a href="mailto:shivam1072@gmail.com" className="text-gray-800 font-medium hover:text-blue-600">
-                shivam1072@gmail.com
+              <a href="mailto:sshivam1072@gmail.com" className="text-gray-800 font-medium hover:text-blue-600">
+                sshivam1072@gmail.com
               </a>
             </div>
           </div>
@@ -77,10 +79,10 @@ export default function Contact() {
             <div>
               <p className="text-sm text-gray-500">Find me online</p>
               <div className="flex gap-4 mt-1">
-                <a href="https://github.com/shivam-1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                <a href="https://github.com/shivam-1072" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
                   GitHub
                 </a>
-                <a href="https://linkedin.com/in/shivamsharma1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                <a href="https://linkedin.com/in/shivamsharma1072" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
                   LinkedIn
                 </a>
               </div>
@@ -93,20 +95,32 @@ export default function Contact() {
         </div>
 
         {/* RIGHT SIDE - Contact Form */}
-        <div className="w-full md:w-1/2 bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+        <div className="w-full bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Send a Message</h3>
-          
-          {/* Success Message */}
+
+          {/* ===== SUCCESS MESSAGE ===== */}
           {formStatus === "success" && (
-            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-              ✅ Thanks! Your message has been sent. I'll get back to you soon.
+            <div className="mb-4 p-4 bg-green-50 border-2 border-green-500 rounded-lg flex items-start gap-3 animate-fadeIn">
+              <span className="text-2xl">✅</span>
+              <div>
+                <p className="text-green-800 font-bold">Message Sent Successfully!</p>
+                <p className="text-green-700 text-sm mt-1">
+                  Thanks for reaching out. I'll get back to you as soon as possible! 🚀
+                </p>
+              </div>
             </div>
           )}
 
-          {/* Error Message */}
+          {/* ===== ERROR MESSAGE ===== */}
           {formStatus === "error" && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              ❌ Something went wrong. Please try again or email me directly.
+            <div className="mb-4 p-4 bg-red-50 border-2 border-red-500 rounded-lg flex items-start gap-3">
+              <span className="text-2xl">❌</span>
+              <div>
+                <p className="text-red-800 font-bold">Oops! Something went wrong.</p>
+                <p className="text-red-700 text-sm mt-1">
+                  Please try again or email me directly at sshivam1072@gmail.com
+                </p>
+              </div>
             </div>
           )}
 
@@ -117,7 +131,6 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="space-y-4"
           >
-            {/* Required for Netlify to identify the form */}
             <input type="hidden" name="form-name" value="contact" />
 
             <div>
@@ -126,7 +139,7 @@ export default function Contact() {
                 type="text" 
                 name="name"
                 required
-                // placeholder="Enter Name" 
+                placeholder="John Doe" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 bg-white placeholder-gray-400"
               />
             </div>
@@ -136,7 +149,7 @@ export default function Contact() {
                 type="email" 
                 name="email"
                 required
-                // placeholder="abc@example.com" 
+                placeholder="john@example.com" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 bg-white placeholder-gray-400"
               />
             </div>

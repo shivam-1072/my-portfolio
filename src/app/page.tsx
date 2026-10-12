@@ -33,8 +33,8 @@ export default function Home() {
 
       <main className="bg-gradient-to-br from-gray-50 to-gray-100">
         
-{/* ===== NAVBAR WITH HOVER UNDERLINE & NO BLUE SHADE ===== */}
-<nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60 px-4 py-4">
+{/* ===== NAVBAR ===== */}
+<nav className="sticky top-0 z-50 border-b border-slate-700/70 bg-slate-950/95 px-4 py-4 shadow-lg shadow-slate-950/10 backdrop-blur-md">
   <div className="max-w-6xl mx-auto flex items-center justify-between">
     {/* Logo */}
     <a href="#" className="flex items-center">
@@ -45,48 +45,22 @@ export default function Home() {
   />
 </a>
 
-    {/* Desktop Nav Links with Hover Underline - NO BLUE SHADE */}
-<div className="hidden md:flex items-center gap-8 text-base font-medium text-gray-600">
+  {/* Desktop navigation */}
+<div className="hidden md:flex items-center gap-2 text-base font-semibold">
+  {[
+  ["About", "#about"],
+  ["Skills", "#skills"],
+  ["Projects", "#projects"],
+  ["Contact", "#contact"],
+  ].map(([label, href]) => (
   <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-    }}
-    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
+    key={href}
+    href={href}
+    className="rounded-lg px-4 py-2 text-slate-300 transition-colors duration-200 hover:bg-blue-500/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
   >
-    About
+    {label}
   </a>
-  <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-    }}
-    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
-  >
-    Skills
-  </a>
-  <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-    }}
-    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
-  >
-    Projects
-  </a>
-  <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    }}
-    className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent"
-  >
-    Contact
-  </a>
+  ))}
   {/* <a 
   href="/cv-image.png" 
   target="_blank"
@@ -99,8 +73,9 @@ export default function Home() {
     {/* Mobile Hamburger - Animated Icon */}
     <button
       onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className="md:hidden text-gray-600 text-3xl focus:outline-none transition-transform duration-300 hover:scale-110"
+      className="md:hidden rounded-lg px-2 text-3xl text-slate-200 transition-colors duration-200 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       aria-label="Toggle Menu"
+      aria-expanded={isMenuOpen}
     >
       {isMenuOpen ? '✕' : '☰'}
     </button>
@@ -113,39 +88,39 @@ export default function Home() {
       ${isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
     `}
   >
-    <div className="flex flex-col items-center gap-4 text-base font-medium text-gray-600 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg p-4 shadow-lg">
+    <div className="flex flex-col items-stretch gap-2 rounded-xl border border-slate-700 bg-slate-900 p-4 text-center text-base font-medium shadow-xl shadow-slate-950/20">
       <a
         href="#about"
         onClick={() => setIsMenuOpen(false)}
-        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+        className="rounded-lg px-4 py-2 text-slate-300 transition-colors duration-200 hover:bg-blue-500/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         About
       </a>
       <a
         href="#skills"
         onClick={() => setIsMenuOpen(false)}
-        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+        className="rounded-lg px-4 py-2 text-slate-300 transition-colors duration-200 hover:bg-blue-500/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         Skills
       </a>
       <a
         href="#projects"
         onClick={() => setIsMenuOpen(false)}
-        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+        className="rounded-lg px-4 py-2 text-slate-300 transition-colors duration-200 hover:bg-blue-500/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         Projects
       </a>
       <a
         href="#contact"
         onClick={() => setIsMenuOpen(false)}
-        className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-0.5 hover:text-blue-600 transition-colors focus:outline-none active:bg-transparent py-1"
+        className="rounded-lg px-4 py-2 text-slate-300 transition-colors duration-200 hover:bg-blue-500/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         Contact
       </a>
       <a
         href="/cv"
         onClick={() => setIsMenuOpen(false)}
-        className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold w-full text-center focus:outline-none active:scale-95"
+        className="w-full rounded-lg bg-blue-600 px-5 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         📄 View CV
       </a>
@@ -211,8 +186,7 @@ export default function Home() {
             </div>
 
             <p className="text-gray-600 text-base md:text-lg max-w-lg leading-relaxed">
-              I keep banking applications running at <strong className="text-blue-600">99.9% uptime</strong>, 
-              reduce MTTR by <strong className="text-blue-600">30%</strong>, and turn complex infrastructure 
+              I keep banking applications running at <strong className="text-blue-600">99.9% uptime</strong>, and turn complex infrastructure 
               into simple, automated pipelines.
             </p>
 
@@ -245,11 +219,11 @@ export default function Home() {
                 📬 Let's Talk
               </a>
               <a 
-  href="/cv" 
-  className="border-2 border-gray-300 text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all hover:-translate-y-0.5"
->
-  📄 View CV
-</a>
+                href="/cv"
+                className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all hover:-translate-y-0.5"
+              >
+                📄 View CV
+              </a>
             </div>
           </div>
         </div>
@@ -271,11 +245,10 @@ export default function Home() {
               <p className="text-gray-600">
                 I've worked on critical systems including <span className="text-blue-600 font-medium">RFMS, VAM, SFMS, and CCIL</span>, 
                 ensuring <span className="text-blue-600 font-medium">99.9% application availability</span>. 
-                I reduced Mean Time To Resolution (MTTR) by <span className="text-blue-600 font-medium">30%</span> 
                 through proactive monitoring and root cause analysis.
               </p>
               <p className="text-gray-600">
-                Recently, I built and deployed a <span className="text-blue-600 font-medium">Construction Workforce Management System</span> 
+                Recently, I built and deployed a <span className="text-blue-600 font-medium">Construction Workforce Management System </span> 
                 using Django, PostgreSQL, Docker, and GitHub Actions CI/CD – taking a project from code to cloud 
                 entirely on my own.
               </p>
@@ -290,7 +263,7 @@ export default function Home() {
                   🎓 MCA
                 </span>
                 <span className="rounded-full bg-blue-50 px-4 py-1.5 text-sm text-blue-700 border border-blue-200">
-                  ☁️ AWS Certified
+                  ☁️ AWS Practitioner Certified
                 </span>
                 <span className="rounded-full bg-blue-50 px-4 py-1.5 text-sm text-blue-700 border border-blue-200">
                   🐳 Docker + K8s
@@ -312,10 +285,10 @@ export default function Home() {
                   <span className="text-blue-600">🏦</span> 
                   <span>Ex-<strong className="text-gray-800">Acutec Global Services</strong> (Banking)</span>
                 </li>
-                <li className="flex items-center gap-3">
+                {/* <li className="flex items-center gap-3">
                   <span className="text-blue-600">📈</span> 
                   <span>Reduced MTTR by <strong className="text-gray-800">30%</strong></span>
-                </li>
+                </li> */}
                 <li className="flex items-center gap-3">
                   <span className="text-blue-600">🚀</span> 
                   <span>Current Stack: <strong className="text-gray-800">Next.js + DevOps</strong></span>
@@ -334,7 +307,7 @@ export default function Home() {
         {/* ============================================================ */}
         <section id="skills" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
           <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-            My <span className="text-blue-600">Tech Arsenal</span>
+             <span className="text-blue-600">Tools & Technologies</span>
           </h2>
           <p className="mb-8 text-gray-500 max-w-2xl">
             Tools and technologies I use daily to keep systems running smoothly.
@@ -493,7 +466,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-800 mb-2">Banking Production Support (RFMS, VAM, SFMS, CCIL)</h3>
               <p className="text-gray-600 text-sm mb-2">
                 Managed critical Linux-based banking applications ensuring <strong className="text-blue-600">99.9% availability</strong>. 
-                Handled incident management, root cause analysis, and reduced MTTR by <strong className="text-blue-600">30%</strong>. 
+                Handled incident management, root cause analysis. 
                 Coordinated with cross-functional teams to maintain system stability for high-value financial transactions.
               </p>
               <div className="flex flex-wrap gap-3 text-xs text-gray-400">
@@ -510,122 +483,14 @@ export default function Home() {
           </div>
         </section>        
 
-        {/* ============================================================ */}
-        {/* <section id="projects"> ... We will add this in Session #7 ... </section> */}
-
-{/* <Contact /> */}
+    
 
 {/* ============================================================ */}
-{/* SECTION: CONTACT - SIMPLEST POSSIBLE */}
+{/* SECTION: CONTACT */}
 {/* ============================================================ */}
-<section id="contact" className="w-full max-w-5xl mx-auto py-12 px-4 scroll-mt-20">
-  <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-    Let's <span className="text-blue-600">Connect</span>
-  </h2>
-  <p className="mb-10 text-gray-500 max-w-2xl">
-    Have a project in mind or just want to chat? Reach out to me.
-  </p>
 
-  {/* SIMPLE TWO-COLUMN LAYOUT */}
-  <div className="w-full">
-    <div className="flex flex-wrap -mx-4">
-      
-      {/* LEFT COLUMN */}
-      <div className="w-full md:w-1/2 px-4">
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
-              📧
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Email</p>
-              <a href="mailto:shivam1072@gmail.com" className="text-gray-800 font-medium hover:text-blue-600">
-                shivam1072@gmail.com
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
-              📱
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Phone</p>
-              <a href="tel:+917506992276" className="text-gray-800 font-medium hover:text-blue-600">
-                +91 7506992276
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
-              🌐
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Find me online</p>
-              <div className="flex gap-4 mt-1">
-                <a href="https://github.com/shivam-1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
-                  GitHub
-                </a>
-                <a href="https://linkedin.com/in/shivamsharma1072" target="_blank" className="text-gray-600 hover:text-blue-600 text-sm font-medium">
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
+<Contact />
 
-          <div className="pt-4 border-t border-gray-200">
-            <p className="text-sm text-gray-500">📍 Mumbai, India</p>
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT COLUMN */}
-      <div className="w-full md:w-1/2 px-4 -mt-32">
-        <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Send a Message</h3>
-          <form className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-              <input 
-                type="text" 
-                placeholder="John Doe" 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
-              <input 
-                type="email" 
-                placeholder="john@example.com" 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-              <textarea 
-                rows={4} 
-                placeholder="Tell me about your project..." 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
-              ></textarea>
-            </div>
-            <button 
-  type="submit" 
-  className="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all hover:shadow-lg text-lg"
->
-  <span className="flex items-center justify-center gap-2">
-    <span>📤</span> Send Message
-  </span>
-</button>
-            <p className="text-xs text-gray-400 text-center mt-2">
-              * This is a demo form. For now, please email me directly.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
         {/* ============================================================ */}
         {/* SECTION 6: FOOTER */}
@@ -633,9 +498,9 @@ export default function Home() {
         <footer className="w-full border-t border-gray-200 bg-white/50 mt-8">
           <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
             <p>
-              © {new Date().getFullYear()} Shivam Sharma. Built with 
-              <span className="text-blue-600"> Next.js</span> & 
-              <span className="text-blue-600"> Tailwind</span>.
+              © {new Date().getFullYear()} Shivam Sharma.
+              {/* <span className="text-blue-600"> Next.js</span> & 
+              <span className="text-blue-600"> Tailwind</span>. */}
             </p>
             <div className="flex gap-6 mt-2 md:mt-0">
               <a href="#about" className="hover:text-blue-600 transition">About</a>

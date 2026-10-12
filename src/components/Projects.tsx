@@ -5,15 +5,6 @@ import Image from 'next/image';
 const projects = [
   {
     id: 1,
-    title: "Women Rights PWA",
-    description: "A Progressive Web App empowering women with knowledge of their legal rights. Features 30+ Indian laws, offline support, mobile-first design, and a contact form with Netlify Forms.",
-    tech: ["React", "PWA", "Netlify", "Bootstrap", "Service Workers"],
-    image: "/images/projects/women-rights/Home.png",
-    liveUrl: "https://women-rights-wpa.netlify.app",
-    githubUrl: "https://github.com/shivam-1072/women-rights"
-  },
-   {
-    id: 2,
     title: "Construction Workforce Management System",  
     description: "A full-stack app to manage construction sites, worker attendance, payroll processing, and expenses with automated PDF payment slips and dynamic dashboards.",
     tech: ["Python", "DJango", "PostgreSQL"],  
@@ -22,7 +13,7 @@ const projects = [
     githubUrl: "https://github.com/shivam-1072/cwms"  
   },
   {
-    id: 3,
+    id: 2,
     title: "Hospital Management System",  
     description: "A web-based platform to manage patient registration, appointments, billing, and electronic health records with role-based access for doctors, nurses, and admins.",
     tech: ["Java", "Jsp", "Servlet", "PostgreSQL", "BootStrap"],  
@@ -30,7 +21,15 @@ const projects = [
     liveUrl: "https://hospital-management-system-8bqf.onrender.com",  
     githubUrl: "https://github.com/shivam-1072/hospital-management-system" 
   },
- 
+  {
+    id: 3,
+    title: "Women Rights PWA",
+    description: "A Progressive Web App empowering women with knowledge of their legal rights. Features 30+ Indian laws, offline support, mobile-first design, and a contact form with Netlify Forms.",
+    tech: ["React", "PWA", "Netlify", "Bootstrap", "Service Workers"],
+    image: "/images/projects/women-rights/Home.png",
+    liveUrl: "https://women-rights-wpa.netlify.app",
+    githubUrl: "https://github.com/shivam-1072/women-rights"
+  },
 ];
 
 export default function Projects() {
